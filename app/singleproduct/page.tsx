@@ -1,7 +1,7 @@
 import React from 'react'
-import product from '../../public/0.svg'
+import product from '../../public/0.webp'
 import Image from 'next/image'
-import carticon from '../../public/Cart.svg'
+import carticon from '../../public/Cart.webp'
 import FeatureProduct from '@/components/FeatureProduct'
 
 function page() {
