@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import c01 from "../public/category01.webp";
-import c02 from "../public/category02.webp";
+import c01 from "../public/Category01.webp";
+import c02 from "../public/Category02.webp";
 import c03 from "../public/Category03.webp";
 import g1 from "../public/hot-category.webp";
 
