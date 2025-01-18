@@ -1,6 +1,10 @@
 const nextConfig = {
   staticPageGenerationTimeout: 120, // Increase the timeout to 120 seconds (default is 60)
 
+  images: {
+    domains: ['cdn.sanity.io'], // Add Sanity's image domain to allow loading images from Sanity
+  },
+
   webpack: (config) => {
     // Handle small SVGs with @svgr/webpack
     config.module.rules.push({
