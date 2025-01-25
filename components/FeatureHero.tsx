@@ -5,6 +5,7 @@ import i2 from "../public/Product04.webp";
 import i3 from "../public/product03.webp";
 import i4 from "../public/product02.webp";
 import carticon from "../public/Cart.webp";
+import ButtonCart from "./ButtonCart";
 
 function FeatureHero() {
   return (
@@ -32,9 +33,10 @@ function FeatureHero() {
               <h3 className="text-secondary">Library Stool Chair</h3>
               <h1 className="text-black text-sm ">$20</h1>
             </div>
-            <div className="w-[44px] h-[44px] rounded-md bg-[#F0F2F3] flex items-center justify-center">
+            <ButtonCart/>
+            {/* <div className="w-[44px] h-[44px] rounded-md bg-[#F0F2F3] flex items-center justify-center">
               <Image src={carticon} alt="image" width={24} height={24} />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex flex-col space-y-5">

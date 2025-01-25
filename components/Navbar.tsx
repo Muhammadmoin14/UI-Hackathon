@@ -7,7 +7,7 @@ function Navbar() {
         <div>
         <ul className='flex items-center space-x-2 md:space-x-8'>
         <Link href='/'><li className='font-Inter font-medium text-sm text-[#636270]'>Home</li></Link>
-        <Link href='/shop'><li className='font-Inter font-medium text-sm text-[#636270]'>Shop</li></Link>
+        <Link href='/category'><li className='font-Inter font-medium text-sm text-[#636270]'>Category</li></Link>
         <Link href='/products'><li className='font-Inter font-medium text-sm text-[#636270]'>Product</li></Link>
         <Link href='/singleproduct'><li className='font-Inter font-medium text-sm text-[#636270]'>Page</li></Link>
         <Link href='/about'><li className='font-Inter font-medium text-sm text-[#636270]'>About</li></Link>

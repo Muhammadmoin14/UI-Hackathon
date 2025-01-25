@@ -16,8 +16,8 @@ export const categorySchema = defineType({
             type: 'image',
         },
         {
-            title: 'Number of Products',
             name: 'products',
+            title: 'Number of Products',
             type: 'number',
         }
     ],

@@ -1,9 +1,17 @@
 
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
-import carticon from "../../../public/Cart.webp";
+// import carticon from "../../../public/Cart.webp";
 import { client } from "../../../sanity/lib/client";
 import { urlFor } from "../../../sanity/lib/image";
+// import deleteicon from "../../../public/Deleteicon.webp";
+import CartContext from '@/Context/NewContext';
+import DeleteButton from '../../../components/DeleteButton'
+import SpecificButton from '../../../components/SpecificButton'
+import { fetchProducts } from "@/components/FetchData";
+import { ProductType } from "@/types/product";
+
+
 
 interface ProductImage {
   asset: {
@@ -36,9 +44,13 @@ async function fetchProduct(id: string): Promise<Product | null> {
   return product || null; // Return null if no product is found
 }
 
+
+
+
 // Server Component
 const ProductPage = async ({ params }: { params: { id: string } }) => {
   const product = await fetchProduct(params.id);
+  const products: ProductType[] = await fetchProducts();
 
   console.log('Fetched Product:', product); // Debugging the fetched product
   if (!product) {
@@ -69,11 +81,13 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
           <div>
             <h3 className="text-lg text-[#9A9CAA]">{product.description}</h3>
           </div>
-          <div>
-            <button className="w-48 h-14 bg-bluesecond rounded-md flex items-center justify-center gap-3 text-white font-semibold text-xl">
+          <div className="flex flex-row gap-6 items-center">
+            {/* <button className="w-48 h-14 bg-bluesecond rounded-md flex items-center justify-center gap-3 text-white font-semibold text-xl">
               <Image src={carticon} alt="carticon" width={29} height={29} />
               Add to Cart
-            </button>
+            </button> */}
+            <SpecificButton product={product}/>
+            <DeleteButton />
           </div>
         </div>
       </div>

@@ -1,42 +1,21 @@
 import { fetchProducts } from '../../components/FetchData';
-import React from 'react'
+import React from 'react';
 import Image from 'next/image';
-import carticon from "../../public/Cart.webp";
-import { ShoppingCartIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-
-interface Category {
-  _id: string;
-  title: string;
-}
-
-type ProductType = {
-  _id: string;
-  title: string;
-  price: number;
-  priceWithoutDiscount: number | null;
-  category: Category;
-  tags: string[];
-  badge: string | null;
-  image: string;
-  description: string;
-  inventory: number;
-}
-
+import ButtonCart from '@/components/ButtonCart';
+import { ProductType } from '../../types/product'; // Adjust the import path as necessary
 
 const Page = async () => {
-
   const products: ProductType[] = await fetchProducts();
-  
+
   return (
     <div className="w-full h-full bg-white">
-    <div className="md:px-[150px] sm:px-[25px] pt-[57px] pb-[136px] space-y-12">
-      <h2 className="text-secondary md:items-start sm:items-center">All Products</h2>
-      <div className="grid sm:grid-cols-1 md:grid-cols-4 md:grid-row-3 gap-6">
-      {products && products.length > 0 ? (
-            products.map((product: ProductType) => ( 
-              <Link href={`/products/${product._id}`} 
-              key={product._id} className="flex flex-col space-y-5">
+      <div className="md:px-[150px] sm:px-[25px] pt-[57px] pb-[136px] space-y-12">
+        <h2 className="text-secondary md:items-start sm:items-center">All Products</h2>
+        <div className="grid sm:grid-cols-1 md:grid-cols-4 md:grid-row-3 gap-6">
+          {products && products.length > 0 ? (
+            products.map((product: ProductType) => (
+              <Link href={`/products/${product._id}`} key={product._id} className="flex flex-col space-y-5">
                 <Image
                   src={product.image ? product.image : '/images/default-image.png'} // Fallback if image is invalid
                   alt={product.title}
@@ -44,32 +23,101 @@ const Page = async () => {
                   height={312}
                   className="object-cover"
                 />
-                
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-col">
                     <h3 className="text-secondary">{product.title}</h3>
                     <h1 className="text-black text-sm">${product.price}</h1>
                   </div>
-                  <div className="w-[44px] h-[44px] rounded-md bg-bluesecond flex items-center justify-center">
-                    <Image src={carticon} alt="Cart" width={24} height={24} />
-                  </div>
+                  <ButtonCart product={product} /> {/* Pass product to ButtonCart */}
                 </div>
               </Link>
-              
             ))
           ) : (
             <div>No products available</div> // Handle no products case
           )}
+        </div>
       </div>
     </div>
-  </div>
-
-);
+  );
 };
 
+export default Page;
+
+// import { fetchProducts } from '../../components/FetchData';
+// import React from 'react'
+// import Image from 'next/image';
+// // import carticon from "../../public/Cart.webp";
+// // import { ShoppingCartIcon } from '@heroicons/react/solid';
+// import Link from 'next/link';
+// import ButtonCart from '@/components/ButtonCart';
 
 
-export default Page ;
+// interface Category {
+//   _id: string;
+//   title: string;
+// }
+
+// type ProductType = {
+//   _id: string;
+//   title: string;
+//   price: number;
+//   priceWithoutDiscount: number | null;
+//   category: Category;
+//   tags: string[];
+//   badge: string | null;
+//   image: string;
+//   description: string;
+//   inventory: number;
+// }
+
+
+// const Page = async () => {
+
+//   const products: ProductType[] = await fetchProducts();
+  
+//   return (
+//     <div className="w-full h-full bg-white">
+//     <div className="md:px-[150px] sm:px-[25px] pt-[57px] pb-[136px] space-y-12">
+//       <h2 className="text-secondary md:items-start sm:items-center">All Products</h2>
+//       <div className="grid sm:grid-cols-1 md:grid-cols-4 md:grid-row-3 gap-6">
+//       {products && products.length > 0 ? (
+//             products.map((product: ProductType) => ( 
+//               <Link href={`/products/${product._id}`} 
+//               key={product._id} className="flex flex-col space-y-5">
+//                 <Image
+//                   src={product.image ? product.image : '/images/default-image.png'} // Fallback if image is invalid
+//                   alt={product.title}
+//                   width={312}
+//                   height={312}
+//                   className="object-cover"
+//                 />
+                
+//                 <div className="flex flex-row justify-between">
+//                   <div className="flex flex-col">
+//                     <h3 className="text-secondary">{product.title}</h3>
+//                     <h1 className="text-black text-sm">${product.price}</h1>
+//                   </div>
+//                   {/* <div className="w-[44px] h-[44px] rounded-md bg-bluesecond flex items-center justify-center">
+//                     <Image src={carticon} alt="Cart" width={24} height={24} />
+//                   </div> */}
+//                   <ButtonCart/>
+//                 </div>
+//               </Link>
+              
+//             ))
+//           ) : (
+//             <div>No products available</div> // Handle no products case
+//           )}
+//       </div>
+//     </div>
+//   </div>
+
+// );
+// };
+
+
+
+// export default Page ;
 
 
 
