@@ -15,7 +15,8 @@ const Page = async () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-4 md:grid-row-3 gap-6">
           {products && products.length > 0 ? (
             products.map((product: ProductType) => (
-              <Link href={`/products/${product._id}`} key={product._id} className="flex flex-col space-y-5">
+              <div key={product._id} className="flex flex-col space-y-5">
+              <Link href={`/products/${product._id}`} >
                 <Image
                   src={product.image ? product.image : '/images/default-image.png'} // Fallback if image is invalid
                   alt={product.title}
@@ -23,15 +24,19 @@ const Page = async () => {
                   height={312}
                   className="object-cover"
                 />
+                </Link>
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-col">
                     <h3 className="text-secondary">{product.title}</h3>
                     <h1 className="text-black text-sm">${product.price}</h1>
                   </div>
-                  <ButtonCart product={product} /> {/* Pass product to ButtonCart */}
+                  <ButtonCart product={product} /> 
                 </div>
-              </Link>
+              
+              
+              </div>
             ))
+
           ) : (
             <div>No products available</div> // Handle no products case
           )}
