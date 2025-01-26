@@ -13,7 +13,7 @@ function CartPage() {
   const { cartItems, removeFromCart, clearCart, addToCart, cartCount, updateCartItem  } = useContext(CartContext)!
   
   return (
-    <div className="w-full md:h-lvh sm:h-full md:px-[150px] sm:px-[25px] py-[76px] flex md:flex-row sm:flex-col space-x-20">
+    <div className="w-full md:h-auto sm:h-full md:px-[150px] sm:px-[25px] py-[76px] flex md:flex-row sm:flex-col space-x-20 ">
       <div className="md:w-3/4 sm:w-full flex flex-col space-y-6 ">
         <h4 className="text-[22px]">Bag</h4>
         {cartItems.length === 0 ? (
@@ -22,9 +22,11 @@ function CartPage() {
           cartItems.map((item:CartItem) => (
             
             <div key={item.id} className="flex flex-row space-x-6">
-              <div>
+              
+              <Link href={`/products/${item.id}`}>
               <Image src={item.image} alt="image" width={250} height={150} />
-              </div>
+              </Link>
+              
               <div className="w-full flex justify-between">
                 <div className="flex flex-col justify-evenly">
                   <h2 className="text-2xl">{item.title}</h2>
@@ -48,7 +50,7 @@ function CartPage() {
         )}
         <button onClick={clearCart} className="font-semibold font-Poppins  text-red-700">Clear Cart</button>
       </div>
-      <div className="md:w-1/4 flex flex-col space-y-6 md:items-start sm:items-center md:pt-0 sm:pt-6 ">
+      <div className="md:w-1/4 flex flex-col space-y-6 md:items-start sm:items-center md:pt-0 sm:pt-6 sticky top-[76px] max-h-[calc(70lvh-76px)] ">
         <h4 className="text-xl">Summary</h4>
         <div className="space-y-6">
           <div className="flex items-center justify-between">
@@ -65,11 +67,13 @@ function CartPage() {
             <h3>${cartItems.reduce((total:number, item:CartItem) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
           </div>
           <div className="w-full border-b-[#757575] border"></div>
-          <Link href="/checkout">
-          <button className="bg-bluesecond w-[334px] h-[60px] rounded-full text-white font-Inter flex items-center justify-center">
+          <div>
+          <Link href="/checkout" >
+          <button className="bg-bluesecond w-[334px] h-[60px] py-6 rounded-full text-white font-Inter flex items-center justify-center">
             Member Checkout
           </button>
           </Link>
+          </div>
         </div>
       </div>
     </div>

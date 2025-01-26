@@ -13,12 +13,12 @@ interface ButtonCartProps {
 
 function ButtonCart({ product }: ButtonCartProps) {
   const { addToCart } = useContext(CartContext)!; // Use addToCart from context
-  const {incrementCart} = useContext(CartContext)!
+  // const {incrementCart} = useContext(CartContext)!
   const imageUrl = urlFor(product.image).width(675).height(607).url();
   
   const handleAddToCart = () => {
     addToCart({ id: product._id, title: product.title, price: product.price, quantity: 1, image:imageUrl });
-    incrementCart()
+    // incrementCart()
   };
 
   return (

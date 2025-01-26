@@ -87,7 +87,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
               Add to Cart
             </button> */}
             <SpecificButton product={product}/>
-            <DeleteButton />
+            <DeleteButton id={product._id}/>
           </div>
         </div>
       </div>

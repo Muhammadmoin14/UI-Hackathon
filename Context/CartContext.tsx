@@ -46,12 +46,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     // setCartCount((prev) => prev + 1);
     // };
   
-    // const decrementCart = () => {
+  
+  // const decrementCart = () => {
     //   setCartCount((prev) =>
     //   prev >= 1 ? prev - 1 : 0
     // );
     // };
-
     // console.log({ cartCount }); // Debug: Check cartCount value
 
     const updateCartItem = (id: string, quantity: number) => {
@@ -72,7 +72,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, cartCount, updateCartItem,  }}>
+    <CartContext.Provider value={{ cartItems,
+      addToCart,
+      removeFromCart,
+      clearCart,
+      cartCount,
+      updateCartItem,
+      // incrementCart,
+      // decrementCart, 
+      }}>
       {children}
     </CartContext.Provider>
   );

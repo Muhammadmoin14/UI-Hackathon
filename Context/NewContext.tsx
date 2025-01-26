@@ -10,8 +10,8 @@ interface CartItem {
 
 interface CartContextType {
   cartCount: number;
-  incrementCart: () => void;
-  decrementCart: () => void;
+  // incrementCart: () => void;
+  // decrementCart: () => void;
   addToCart: (item: CartItem) => void; // Function to add an item to the cart
   removeFromCart: (id: string) => void; // Function to remove an item from the cart
   clearCart: () => void; // Function to clear the cart

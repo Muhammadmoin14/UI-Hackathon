@@ -33,10 +33,10 @@ function FeatureHero() {
               <h3 className="text-secondary">Library Stool Chair</h3>
               <h1 className="text-black text-sm ">$20</h1>
             </div>
-            <ButtonCart/>
-            {/* <div className="w-[44px] h-[44px] rounded-md bg-[#F0F2F3] flex items-center justify-center">
+            {/* <ButtonCart /> */}
+            <div className="w-[44px] h-[44px] rounded-md bg-[#F0F2F3] flex items-center justify-center">
               <Image src={carticon} alt="image" width={24} height={24} />
-            </div> */}
+            </div> 
           </div>
         </div>
         <div className="flex flex-col space-y-5">
